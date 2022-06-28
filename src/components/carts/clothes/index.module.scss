@@ -1,0 +1,149 @@
+.cart {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all .1s ease-out;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.imagesWrap {
+  width: 100%;
+  position: relative;
+}
+
+.images {
+  display: grid;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.imageWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &:hover .indicator {
+    display: block;
+  }
+}
+
+.indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background-color: #fff;
+  margin-bottom: 5px;
+  display: none;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  padding: 6px 8px 10px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #393939;
+  margin-bottom: 6px;
+}
+
+.sum {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #393939;
+  margin-bottom: 6px;
+}
+
+.sizes {
+  margin-bottom: 10px;
+}
+
+.size {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #7C7C7C;
+}
+
+.sizeNumber {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #7C7C7C;
+  margin-left: 4px;
+}
+.colors {
+  display: flex;
+}
+
+.color {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 13px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.triangle {
+  width: 50px;
+  height: 50px;
+  background: -webkit-linear-gradient(-45deg, #E5271B 50%, transparent 50%);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.sale {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 5px;
+  top: 7px;
+}
+
+.icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loveIcon {
+  fill: #fff;
+}

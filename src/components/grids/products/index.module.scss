@@ -1,0 +1,56 @@
+.inner {
+    margin-bottom: 44px;
+}
+
+.h1 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #393939;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.collection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-gap: 8px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.button {
+    width: 107px;
+    height: 32px;
+    background-color: #1D1D1B;
+
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+
+    border: none;
+}
+
+.slider {
+    display: none;
+}
+
+@media only screen and (max-width: 770px) {
+    .inner {
+        margin-bottom: 22px;
+    }
+
+    .collection {
+        display: none;
+    }
+
+    .button {
+        display: none;
+    }
+
+    .slider {
+        display: block;
+    }
+}

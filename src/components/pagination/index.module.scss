@@ -1,0 +1,42 @@
+.wrap {
+    max-width: 1172px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 49px;
+}
+
+.pagination {
+    display: flex;
+}
+
+.prev {
+    margin-left: 0;
+    margin-right: 2px;
+}
+.next {
+    margin-right: 0;
+    margin-left: 12px !important;
+}
+
+.button {
+    width: 44px;
+    height: 44px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 500;
+    color: #979797;
+
+    //transition: all .1s ease-out;
+
+    margin-left: 10px;
+
+    &.active {
+        color: #FFFFFF;
+        background-color: #1D1D1B;
+    }
+}

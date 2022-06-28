@@ -1,0 +1,33 @@
+.inner {
+  margin: 32px 0 18px;
+
+
+  & h1 {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 29px;
+      color: #393939;
+  }
+}
+
+.grid {
+  width: 100%;
+  max-width: 1172px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 8px;
+  margin-bottom: 16px;
+}
+
+
+@media only screen and (max-width: 880px) {
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .grid {
+      grid-template-columns: 1fr;
+  }
+}

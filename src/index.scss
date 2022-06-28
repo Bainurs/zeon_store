@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8F8F8;
+  min-height: 100vh;
+  position: relative;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1212px;
+    padding: 0 20px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.styles-module_wrapper__1I_qj {
+  z-index: 5 !important;
+}

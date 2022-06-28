@@ -1,0 +1,153 @@
+.footer {
+  width: 100%;
+  background-color: #1D1D1B;
+  padding: 52px 0 0;
+}
+
+.wrap {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 36px;
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.infoWrap {
+  display: none;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  margin-left: auto;
+}
+
+
+.dev {
+  display: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #B9B9B9;
+}
+.dev2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #B9B9B9;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+
+  &:last-child {
+    a {
+      margin-bottom: 0;
+    }
+  }
+
+  & a {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+
+  & h3 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #E2E2E2;
+    margin-bottom: 16px;
+
+  }
+
+  & span {
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  & a {
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+    text-decoration: none;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  & div {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+
+@media only screen and (max-width: 1192px) {
+  .wrapper {
+    padding: 0 20px 36px;
+  }
+}
+@media only screen and (max-width: 770px) {
+
+  .footer {
+    display: none;
+  }
+  .dev {
+    display: block;
+  }
+  .dev2 {
+    display: none;
+  }
+  .inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .infoWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .logo {
+    margin-bottom: 26px;
+  }
+
+  .info {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 42px;
+    }
+  }
+}

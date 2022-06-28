@@ -1,0 +1,41 @@
+.question {
+  width: 100%;
+  background-color: #fff;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.titleWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #393939;
+}
+
+.arrow {
+  &.active {
+    transform: rotate(180deg);
+  }
+}
+
+.text {
+  display: none;
+  padding-top: 12px;
+  width: 100%;
+  background-color: #fff;
+
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 160%;
+  color: #354455;
+
+  &.active {
+    display: inline-block;
+  }
+}

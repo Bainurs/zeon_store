@@ -34,28 +34,25 @@ const SearchResult = () => {
             {page: 'Главная', path: '/'},
             {page: 'Результаты поиска'},
         ]}>
-            <h1 className={styles.title}>Результаты поиска по запросу: {search.search_page_value}</h1>
+            <h1 className={styles.title}>Результаты поиска по запросу: {search.searchValue_page}</h1>
             <div className={styles.grid}>
-                {search.search_page_products.length !== 0 ?
-                    search.search_page_products.map((product)=>
+                {search.products_page.length !== 0 ?
+                    search.products_page.map((product)=>
                         <CardClothes product={product} key={product.id}/>
                     )
                     :
                     null
                 }
             </div>
-            {search.search_page_products.length !== 0 ?
+            {search.products_page.length !== 0 ?
                 <Pagination store={search}/>
                 :
                 null
             }
-            {search.search_page_products.length === 0?
+            {search.products_page.length === 0?
                 <>
-                {search.search_page_value.length !== 0 ?
                     <div className={styles.notFound}>По вашему запросу ничего не найдено</div>
-                    :
-                    <h1 className={styles.notFound}>Введите запрос</h1>
-                }
+                    {/*<h1 className={styles.notFound}>Введите запрос</h1>*/}
                     <h1 className={styles.extra}>Возможно вас заинтересует</h1>
                     <div className={styles.slider}>
                         {bestsellers.products.length ?

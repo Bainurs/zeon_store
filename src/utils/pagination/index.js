@@ -1,7 +1,6 @@
 export default function pagination(pagesQuantity, currentPage, oldPage) {
-
-    let limit = 3
-    let limit2 = 4
+    let limit = 3 //count btns before active btn
+    let limit2 = 4 // count btns after active btnx
     let max = 5
     if (window.innerWidth <= 370) {
         limit = 2

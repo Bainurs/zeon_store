@@ -22,6 +22,10 @@
   & svg:first-child {
     margin-bottom: 30px;
   }
+
+  & svg {
+    cursor: pointer;
+  }
 }
 
 .socialWrap {
@@ -32,7 +36,7 @@
 
 .socials {
   position: absolute;
-  bottom: -7px;
+  bottom: -12px;
   right: calc(100% + 23px);
   //background-color: #b05f5f;
 
@@ -41,10 +45,17 @@
   & svg:first-child {
     margin-bottom: 0;
   }
-  & svg {
+  & a {
     margin-right: 6px;
   }
   & svg:last-child {
     margin-right: 0;
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .contactsWrap {
+    display: none;
   }
 }

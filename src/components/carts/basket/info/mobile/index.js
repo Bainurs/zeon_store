@@ -1,14 +1,25 @@
 import {useContext, useState} from 'react';
+import {observer} from "mobx-react-lite";
+
 //context store
 import {Context} from "../../../../../index";
 //styles
 import styles from './index.module.scss'
+import { useEffect } from 'react';
 
 const CardBasketInfoMobile = ({setOpen}) => {
 
     const {shoppingCart} = useContext(Context)
+    const [text, setText] = useState('')
 
     const [isActive, setActive] = useState()
+
+    useEffect(() => {
+        console.log('shoppingCart ', shoppingCart.totalLines)
+        if(shoppingCart.totalLines === 1) return setText('линия');
+        if(shoppingCart.totalLines === 2) return setText('линии');
+        return setText('линеек')
+    }, [shoppingCart.totalLines])
 
     return (
         <div className={styles.wrap}>
@@ -20,7 +31,7 @@ const CardBasketInfoMobile = ({setOpen}) => {
                         Общее количество:
                     </span>
                     <span className={styles.value}>
-                        {shoppingCart.totalLines} линеек ({shoppingCart.totalProducts}шт.)
+                        {shoppingCart.totalLines} {text} ({shoppingCart.totalProducts}шт.)
                     </span>
                     </div>
                     <div className={styles.row}>
@@ -61,4 +72,4 @@ const CardBasketInfoMobile = ({setOpen}) => {
     );
 };
 
-export default CardBasketInfoMobile;
+export default observer(CardBasketInfoMobile);

@@ -9,28 +9,28 @@ import styles from './index.module.scss'
 import Header from "./header";
 import Footer from "./footer";
 import HeaderMob from "./header/mobile";
-import Loading from './../components/loading/index';
+// import Loading from './../components/loading/index';
 
 const Main = ({children, path}) => {
 
-    const {search, novelties, bestsellers, productDetail} = useContext(Context)
+    const {search} = useContext(Context) //, novelties, bestsellers, productDetail
     const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(true)
+    // const [isLoading, setIsLoading] = useState(true)
 
-    const loadData = useCallback(() => {
-        if(novelties || bestsellers || productDetail) {
-            setTimeout(() => {
-                return setIsLoading(false)
-            }, 2000)
-        } else {
-            return setIsLoading(false)
-        }
+    // const loadData = useCallback(() => {
+    //     if(novelties || bestsellers || productDetail) {
+    //         setTimeout(() => {
+    //             return setIsLoading(false)
+    //         }, 2000)
+    //     } else {
+    //         return setIsLoading(false)
+    //     }
         
-    }, [novelties, bestsellers, productDetail])
+    // }, [novelties, bestsellers, productDetail])
     
-    useEffect(() => {
-        loadData()
-    }, [loadData])
+    // useEffect(() => {
+    //     loadData()
+    // }, [loadData])
 
     return (
         <div
@@ -45,11 +45,7 @@ const Main = ({children, path}) => {
                 null
             }
 
-            {isLoading ?
-                    <Loading />
-                : 
-                null
-            }
+            
             <>
                 <Header/>
                 <HeaderMob/>
@@ -59,14 +55,14 @@ const Main = ({children, path}) => {
                         {path ?
                             <div className={styles.pathWrap}>
                                 <div className={styles.inner}>
-                                    {path.map((p, index, array) =>
+                                    {path.map((item, index, array) =>
                                         index !== array.length -1 ?
                                             <div key={index}>
-                                                <span className={styles.breadcrumb} onClick={() => navigate(p.path)}>{p.page}</span>
+                                                <span className={styles.breadcrumb} onClick={() => navigate(item.path)}>{item.page}</span>
                                                 <span className={styles.breadcrumbLine}>/</span>
                                             </div>
                                             :
-                                            <span key={index} className={styles.breadcrumbCurrent} onClick={() => navigate(p.path)}>{p.page}</span>
+                                            <span key={index} className={styles.breadcrumbCurrent} onClick={() => navigate(item.path)}>{item.page}</span>
             
                                     )}
                                 </div>

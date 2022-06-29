@@ -58,6 +58,12 @@ const Cart = () => {
                 </div>
                 :
                 <>
+                
+                {accessModal ?
+                    <ModalCallAccess setModal={setAccessModal}/>
+                    :
+                    null
+                }
                     <h1 className={styles.title}>Корзина</h1>
                     <div className={styles.count}>
                         <h4 className={styles.title}>

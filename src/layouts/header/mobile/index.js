@@ -1,10 +1,9 @@
-import {useCallback, useEffect, useContext, useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-//context store
+import React, {useContext, useEffect, useState, useCallback} from 'react';
+import {Link, useNavigate} from "react-router-dom";
+import {observer} from "mobx-react-lite";
 import {Context} from "../../../index";
 //styles
-import styles from './index.module.scss';
+import styles from './index.module.scss'
 //icons
 import LogoIcon from "../../../assets/icons/LogoIcon";
 import SearchIcon from "../../../assets/icons/SearchIcon";
@@ -16,38 +15,41 @@ import Whatsapp2Icon from "../../../assets/icons/Whatsapp2Icon";
 import Phone2Icon from "../../../assets/icons/Phone2Icon";
 //components
 import SearchMobile from "../../../components/search/mobile";
+import ModalCall from '../../../components/modals/modalCall';
+import ModalCallAccess from '../../../components/modals/modalCallAccess';
+import axios from "axios";
 
-const HeaderMob = () => {
-    const {favorites} = useContext(Context)
-    const {shoppingCart} = useContext(Context)
-    const navigate = useNavigate()
+const HeaderMobile = () => {
+
     const {search} = useContext(Context)
-    
-    // const [mobSearch, setMobSearch] = useState(false)
+
+    const navigate = useNavigate();
+
     const [isActive, setActive] = useState(false)
-    const [isLoading, setLoading] = useState(true)
     const [data, setData] = useState()
-    
+    const [isLoading, setLoading] = useState(true)
+    const [modal, setModal] = useState(false)
+    const [access, setAccess] = useState(false)
 
-    const load = useCallback(async () => {
-        const response = await axios.get('http://localhost:8000/contacts/')
-        setData(response.data[0])
-        setLoading(false)
-    }, [setData, setLoading]) 
-
-    const handlerSearch = (bool) => {
+    function handlerSearch(bool) {
         search.setModalMobile(bool)
         search.setModalMobileBack(bool)
     }
-    
+
+    const getData = useCallback(async () => {
+        const response = await axios.get('http://localhost:8000/contacts/')
+        setData(response.data[0])
+        setLoading(false)
+    }, [setData, setLoading])
+
     useEffect(() => {
-        load()
-    }, [load])
+        getData()
+    }, [])
 
     return (
         <div className={styles.wrap}>
             <div className={styles.inner}>
-                {search.modalMobile ?
+                {search.modalSearchMobile ?
                     <SearchMobile/>
                     :
                     null
@@ -62,15 +64,19 @@ const HeaderMob = () => {
                     <div className={styles.line}></div>
                     <div className={styles.line}></div>
                 </div>
-                <LogoIcon style={{width: '99px'}}/>
+                <LogoIcon onClick={() => navigate('/')} style={{width: '99px', cursor: 'pointer'}}/>
                 <div>
-                    {search.modalMobile ?
+                    {search.modalSearchMobile ?
                         <CloseIcon
-                            style={{width: 18, height: 18}}
+                            style={{width: 18, height: 18, cursor: 'pointer'}}
                             onClick={() => handlerSearch(false)}
+
                         />
                         :
-                        <SearchIcon onClick={() => handlerSearch(true)}/>
+                        <SearchIcon
+                            style={{cursor: 'pointer'}}
+                            onClick={() => handlerSearch(true)}
+                        />
                     }
                 </div>
                 <div
@@ -89,44 +95,25 @@ const HeaderMob = () => {
                             <div className={styles.title}>
                                 <h3>Меню</h3>
                                 <CloseIcon
+                                    style={{cursor: 'pointer'}}
                                     onClick={() => {
                                         setActive(false)
                                     }}
                                 />
                             </div>
                             <div className={styles.section}>
-                                <Link to='/about-us'><span>О нас</span></Link>
-                                <Link to='/collections'><span>Коллекции</span></Link>
-                                <Link to='/news'><span>Новости</span></Link>
+                                <Link to="/about">О нас</Link>
+                                <Link to="/collections">Коллекции</Link>
+                                <Link to="/news">Новости</Link>
                             </div>
                             <div className={styles.separator}></div>
-                            <div
-                              onClick={() => navigate('/favorites/')}
-                              className={styles.favorite}
-                            >
-                                <div className={styles.icon}>
-                                    <FavoriteIcon/>
-                                    {favorites.products.length ?
-                                        <div className={`${styles.indicate} ${styles.indicatorFavorite}`}></div>
-                                        :
-                                        null
-                                    }
-                                </div>
-                                <span>Избранное</span>
+                            <div className={styles.favorite}>
+                                <FavoriteIcon style={{width: 16, height: 16}}/>
+                                <Link to="/favorites">Избранное</Link>
                             </div>
-                            <div
-                              onClick={() => navigate('/cart/')}
-                              className={styles.productCart}
-                            >
-                                <div className={styles.icon}>
-                                    <CartIcon style={{fill: '#515151'}}/>
-                                    {shoppingCart.products.length ?
-                                        <div className={`${styles.indicate} ${styles.indicatorCart}`}></div>
-                                        :
-                                        null
-                                    }
-                                </div>
-                                <span>Корзина</span>
+                            <div className={styles.productCart}>
+                                <CartIcon style={{width: 16, height: 16}}/>
+                                <Link to="/cart">Корзина</Link>
                             </div>
                         </div>
                         <div className={styles.bottomNav}>
@@ -137,23 +124,37 @@ const HeaderMob = () => {
                                 <span>Тел:</span>
                                 <a href='tel:+996000000000'>+996 000 00 00 00</a>
                             </div>
-                            {
-                              !isLoading && data ?
-                                  <>
-                                      <div className={styles.social}>
-                                          <a href={data.telegram} target="_blank" rel="noreferrer"><Telegram2Icon/></a>
-                                          <a href={data.whatsapp} target="_blank" rel="noreferrer"><Whatsapp2Icon/></a>
-                                          <a href={`tel:${data.phone2}`}><Phone2Icon/></a>
-                                      </div>
-                                  </>
-                                  : null
-                            }
+                            <div className={styles.social}>
+                                {!isLoading ?
+                                    <>
+                                        <a href={data.telegram} target="_blank" rel="noreferrer"><Telegram2Icon/></a>
+                                        <a href={data.whatsapp} target="_blank" rel="noreferrer"><Whatsapp2Icon/></a>
+                                        <span onClick={() => {
+                                            setModal(true)
+                                            console.log('click')
+                                            setActive(false)
+                                        }}><Phone2Icon/></span>
+                                    </>
+                                    :
+                                    null
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {modal ?
+                <ModalCall isActive={modal} setActive={setModal} setAccess={setAccess}/>
+                :
+                null
+            }
+            {access ?
+                <ModalCallAccess setModal={setAccess}/>
+                :
+                null
+            }
         </div>
     );
 };
 
-export default HeaderMob;
+export default observer(HeaderMobile);

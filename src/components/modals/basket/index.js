@@ -66,6 +66,7 @@ const BasketModal = ({isOpen, accessModal, setOpen}) => {
                             values.products = toJS(shoppingCart.products)
                             setOpen(false)
                             accessModal(true)
+                            handleOrder()
                             console.log(values)
                         }}
                     >
@@ -190,10 +191,7 @@ const BasketModal = ({isOpen, accessModal, setOpen}) => {
                                 </div>
                                 <button
                                     type='button'
-                                    onClick={() => {
-                                        handleOrder()
-                                        formik.handleSubmit()
-                                    }}
+                                    onClick={formik.handleSubmit}
                                     className={
                                         formik.isValid && status
                                         ?

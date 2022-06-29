@@ -27,7 +27,7 @@ function App() {
           <Route path='/collections' element={<Collections/>}/>
           <Route path='/collections/:id' element={<CollectionDetail/>}/>
           <Route path='/products/:id' element={<ProductDetail/>}/>
-          <Route path='/products/search' element={<SearchingResults/>}/>
+          <Route path='/search/' element={<SearchingResults/>}/>
       </Routes>
   </BrowserRouter>
   );

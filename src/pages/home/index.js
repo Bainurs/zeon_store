@@ -1,4 +1,5 @@
-import {useContext, useState} from 'react';
+import {useContext, useState, useCallback, useEffect} from 'react';
+import axios from 'axios';
 import {Context} from "../../index";
 //containers
 import Main from "../../layouts";
@@ -9,6 +10,8 @@ import SliderOffers from "../../components/sliders/offers";
 import GridProducts from "../../components/grids/products";
 import GridCollections from "../../components/grids/collections";
 import Benefits from "../../components/benefits";
+import ModalCall from '../../components/modals/modalCall';
+import ModalCallAccess from '../../components/modals/modalCallAccess';
 //icons
 import VectorChat from "../../assets/icons/VectorChat";
 import Chat from "../../assets/icons/Chat";
@@ -24,6 +27,21 @@ const Home = () => {
     const {collectionsMain} = useContext(Context)
 
     const [isActive, setActive] = useState(false)
+    const [data, setData] = useState()
+    const [isLoading, setLoading] = useState(true)
+    const [modal, setModal] = useState(false)
+    const [access, setAccess] = useState(false)
+
+    const getData = useCallback(async () => {
+        window.scrollTo(0, 0)
+        const response = await axios.get('http://localhost:8000/contacts/')
+        setData(response.data[0])
+        setLoading(false)
+    }, [setData, setLoading])
+
+    useEffect(() => {
+        getData()
+    }, [getData])
 
     return (
         <Main>
@@ -35,9 +53,20 @@ const Home = () => {
                         <ChatCloseVector onClick={() => setActive(false)}/>
                         <div className={styles.socialWrap}>
                             <div className={styles.socials}>
-                                <Telegram2Icon/>
-                                <Whatsapp2Icon/>
-                                <Phone2Icon/>
+                                {!isLoading ?
+                                    <>
+                                        <a href={data.telegram} target="_blank" rel="noreferrer"><Telegram2Icon/></a>
+                                        <a href={data.whatsapp} target="_blank" rel="noreferrer"><Whatsapp2Icon/></a>
+                                        <span onClick={() => {
+                                            setModal(true)
+                                            console.log('click')
+                                            setActive(false)
+                                        }}><Phone2Icon/></span>
+                                    </>
+                                    :
+                                    null
+                                }
+
                             </div>
                         </div>
                         </>
@@ -61,8 +90,17 @@ const Home = () => {
                 title={'Коллекции'}
             />
             <Benefits/>
-            {/*<ModalCall/>*/}
-            {/*<ModalCallAccess/>*/}
+
+            {modal ?
+                <ModalCall isActive={modal} setActive={setModal} setAccess={setAccess}/>
+                :
+                null
+            }
+            {access ?
+                <ModalCallAccess setModal={setAccess}/>
+                :
+                null
+            }
         </Main>
     );
 };

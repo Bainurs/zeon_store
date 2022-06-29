@@ -1,5 +1,5 @@
 //containers
-import Template from "../../layouts/index";
+import Main from "../../layouts/index";
 //styles
 import styles from './index.module.scss'
 //static images
@@ -9,7 +9,7 @@ import img3 from '../../assets/images/AboutUs/Bgz6WeuuAgs-2.jpg'
 
 const AboutUs = () => {
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'О нас'},
         ]}>
@@ -32,7 +32,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-        </Template>
+        </Main>
     );
 };
 

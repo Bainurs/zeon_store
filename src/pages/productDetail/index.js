@@ -4,7 +4,7 @@ import {observer} from "mobx-react-lite";
 //context store
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts/index";
+import Main from "../../layouts/index";
 //components
 import SliderImages from "../../components/sliders/images";
 import SliderProducts from "../../components/sliders/products";
@@ -13,7 +13,6 @@ import styles from './index.module.scss';
 //icons
 import LoveFillIcon from "../../assets/icons/LoveFillIcon";
 // import ProductCartIcon from "../../assets/icons/ProductCartIcon";
-import ProductCartIcon from "../../assets/icons/ShopIcon"
 import LoveIcon from "../../assets/icons/LoveIcon";
 
 
@@ -48,7 +47,7 @@ const Product = () => {
     }, [getData])
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Коллекции', path: '/collections/'},
             {page: isLoading ? null : productDetail.product.collection_name,
@@ -181,7 +180,7 @@ const Product = () => {
             <div className={styles.slider}>
                 <SliderProducts store={bestsellers}/>
             </div>
-        </Template>
+        </Main>
     );
 };
 

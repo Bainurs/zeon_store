@@ -3,7 +3,7 @@ import {observer} from "mobx-react-lite";
 //context store
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts";
+import Main from "../../layouts";
 //components
 import CartCollection from "../../components/carts/collection";
 import Pagination from "../../components/pagination";
@@ -25,7 +25,7 @@ const Collections = () => {
     }, [getData])
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Коллекции'},
         ]}>
@@ -46,7 +46,7 @@ const Collections = () => {
                 :
                 null
             }
-        </Template>
+        </Main>
     );
 };
 

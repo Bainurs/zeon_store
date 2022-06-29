@@ -3,7 +3,7 @@ import {observer} from "mobx-react-lite";
 //context store
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts/index";
+import Main from "../../layouts/index";
 //components
 import CardClothes from "../../components/carts/clothes";
 import SliderProducts from "../../components/sliders/products";
@@ -25,7 +25,7 @@ const Favorites = () => {
 
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Избранное'},
         ]}>
@@ -64,7 +64,7 @@ const Favorites = () => {
                 null
             }
 
-        </Template>
+        </Main>
     );
 };
 

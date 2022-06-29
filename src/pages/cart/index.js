@@ -3,7 +3,7 @@ import {observer} from "mobx-react-lite";
 //context store
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts";
+import Main from "../../layouts";
 //components
 import CartBasketInfo from "../../components/carts/basket/info";
 import CartBasketInfoMobile from "../../components/carts/basket/info/mobile";
@@ -32,7 +32,7 @@ const Cart = () => {
     }, [getData])
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Корзина'},
         ]}>
@@ -82,7 +82,7 @@ const Cart = () => {
                     }
                 </>
             }
-        </Template>
+        </Main>
     );
 };
 

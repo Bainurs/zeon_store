@@ -4,7 +4,7 @@ import {observer} from "mobx-react-lite";
 //context store
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts/index";
+import Main from "../../layouts/index";
 //components
 import CardClothes from "../../components/carts/clothes";
 import SliderProducts from "../../components/sliders/products/index";
@@ -30,7 +30,7 @@ const SearchResult = () => {
 
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Результаты поиска'},
         ]}>
@@ -68,7 +68,7 @@ const SearchResult = () => {
                 :
                 null
             }
-        </Template>
+        </Main>
     );
 };
 

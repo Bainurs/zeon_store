@@ -11,7 +11,7 @@ import Footer from "./footer";
 import HeaderMob from "./header/mobile";
 import Loading from './../components/loading/index';
 
-const Template = ({children, path}) => {
+const Main = ({children, path}) => {
 
     const {search, novelties, bestsellers, productDetail} = useContext(Context)
     const navigate = useNavigate()
@@ -88,4 +88,4 @@ const Template = ({children, path}) => {
     );
 };
 
-export default observer(Template);
+export default observer(Main);

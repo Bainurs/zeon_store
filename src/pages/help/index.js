@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 //context store
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts";
+import Main from "../../layouts";
 //componets
 import QuestionsItem from "../../components/questions";
 //styles
@@ -26,7 +26,7 @@ const Help = () => {
     }, [getData])
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Помощь'},
         ]}>
@@ -45,7 +45,7 @@ const Help = () => {
                     }
                 </div>
             </div>
-        </Template>
+        </Main>
     );
 };
 

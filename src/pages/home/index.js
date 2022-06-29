@@ -1,7 +1,7 @@
 import {useContext, useState} from 'react';
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts";
+import Main from "../../layouts";
 //styles
 import styles from './index.module.scss';
 //components
@@ -26,7 +26,7 @@ const Home = () => {
     const [isActive, setActive] = useState(false)
 
     return (
-        <Template>
+        <Main>
             <div className={styles.contactsWrap}>
                 <div className={styles.contact}>
                     <VectorChat onClick={() => window.scrollTo(0, 0)}/>
@@ -63,7 +63,7 @@ const Home = () => {
             <Benefits/>
             {/*<ModalCall/>*/}
             {/*<ModalCallAccess/>*/}
-        </Template>
+        </Main>
     );
 };
 

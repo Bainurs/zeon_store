@@ -3,7 +3,7 @@ import {observer} from "mobx-react-lite";
 //context store
 import {Context} from "../../index";
 //containers
-import Template from "../../layouts";
+import Main from "../../layouts";
 //components
 import NewsItem from "../../components/newsItem";
 //styles
@@ -32,7 +32,7 @@ const News = () => {
     }, [getData])
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Новости'},
         ]}>
@@ -47,7 +47,7 @@ const News = () => {
                 }
             </div>
             <div ref={lastElem}></div>
-        </Template>
+        </Main>
     );
 };
 

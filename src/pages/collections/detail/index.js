@@ -5,7 +5,7 @@ import axios from "axios";
 //context store
 import {Context} from "../../../index";
 //containers
-import Template from "../../../layouts";
+import Main from "../../../layouts";
 //styles
 import styles from './index.module.scss'
 //components
@@ -33,7 +33,7 @@ const CollectionDetail = () => {
     }, [getData])
 
     return (
-        <Template path={[
+        <Main path={[
             {page: 'Главная', path: '/'},
             {page: 'Коллекции', path: '/collections/'},
             {page: 'Лето 2022'},
@@ -65,7 +65,7 @@ const CollectionDetail = () => {
                     <SliderProducts store={bestsellers}/>
                 </div>
             </div>
-        </Template>
+        </Main>
     );
 };
 
